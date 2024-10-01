@@ -7,6 +7,12 @@ module.exports = {
         manrope: ["Manrope", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
       },
+      fontSize: {
+        xl: "22px",
+      },
+      lineHeight: {
+        xl: "30px",
+      },
       colors: {
         primary: "#FCFCFC",
         yellow: "#CA8A04",

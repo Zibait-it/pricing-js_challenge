@@ -805,12 +805,12 @@ video {
   gap: 1.5rem;
 }
 
-.gap-\[30px\] {
-  gap: 30px;
+.gap-8 {
+  gap: 2rem;
 }
 
-.gap-\[35px\] {
-  gap: 35px;
+.gap-9 {
+  gap: 2.25rem;
 }
 
 .rounded-l-full {
@@ -930,14 +930,14 @@ video {
   padding-right: 0.5rem;
 }
 
+.px-2\.5 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.px-\[9px\] {
-  padding-left: 9px;
-  padding-right: 9px;
 }
 
 .py-1 {
@@ -948,6 +948,11 @@ video {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
 }
 
 .py-24 {
@@ -963,11 +968,6 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.py-\[10px\] {
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .text-center {
@@ -1019,6 +1019,10 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-xl {
+  font-size: 22px;
 }
 
 .font-bold {
