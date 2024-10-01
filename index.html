@@ -4,7 +4,191 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pricing - JS Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/output.css" />
   </head>
-  <body></body>
+  <body
+    class="lg:h-screen w-screen flex justify-center lg:items-center bg-[url('/assets/images/Image.jpg')] bg-no-repeat bg-cover bg-center backdrop-brightness-[0.35] relative"
+  >
+    <button
+      class="absolute top-10 right-10 hover:brightness-125 transition-all duration-300"
+    >
+      <img src="/assets/icons/Pricing Button.svg" />
+    </button>
+    <section class="flex flex-col items-center gap-20 w-full">
+      <div class="flex flex-col items-center gap-6">
+        <div class="flex flex-col text-center gap-[30px]">
+          <h1 class="text-primary font-ubuntu font-medium text-4xl">
+            Pick the best plan for you
+          </h1>
+          <p
+            class="text-primary font-manrope font-normal text-[22px] tracking-wider max-w-xl leading-8"
+          >
+            You have Free Unlimited Updates and Premium Support on each package.
+          </p>
+        </div>
+
+        <div class="flex">
+          <button
+            class="font-manrope bg-primary font-bold text-dark_grey text-sm tracking-wider border border-primary rounded-l-full p-3"
+          >
+            Month View
+          </button>
+          <button
+            class="font-manrope text-sm font-medium border tracking-wider text-primary border-primary rounded-r-full p-3 bg-dark"
+          >
+            Week View
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-[35px] justify-center">
+        <div
+          class="flex flex-col items-center border border-primary py-8 px-[9px] gap-10"
+        >
+          <div class="flex flex-col items-center">
+            <h3
+              class="text-primary font-manrope font-bold text-lg tracking-wider"
+            >
+              Bravo Pack
+            </h3>
+            <img src="/assets/icons/PriceIcon.svg" class="w-auto h-auto" />
+            <h2
+              class="font-manrope font-normal text-[22px] text-primary tracking-wider"
+            >
+              $10
+            </h2>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <p
+              class="font-manrope font-normal text-primary tracking-wider text-base text-center"
+            >
+              Complete documentation
+            </p>
+            <hr class="w-full border-t-[0.5] border-primary" />
+            <p
+              class="font-manrope font-normal text-primary tracking-wider text-base text-center"
+            >
+              Working materials in Sketch
+            </p>
+          </div>
+          <button
+            class="bg-primary text-yellow py-[10px] px-4 rounded-l-full rounded-r-full hover:bg-light_yellow transition-all duration-300"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div
+          class="flex flex-col items-center border border-primary bg-primary py-8 px-[9px] gap-10 relative"
+        >
+          <img src="/assets/icons/Featured.svg" class="absolute top-0 left-0" />
+          <div class="flex flex-col items-center">
+            <h3
+              class="text-light_grey font-manrope font-bold text-lg tracking-wider"
+            >
+              Alpha Pack
+            </h3>
+            <img src="/assets/icons/PriceIcon1.svg" class="w-auto h-auto" />
+            <h2
+              class="font-manrope font-normal text-[22px] text-light_grey tracking-wider"
+            >
+              $67
+            </h2>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <p
+              class="font-manrope font-normal text-light_grey tracking-wider text-sm text-center"
+            >
+              Working materials in EPS
+            </p>
+            <hr class="w-full border-t-[0.5] border-light_grey" />
+            <p
+              class="font-manrope font-normal text-light_grey tracking-wider text-sm text-center"
+            >
+              6 months access to the library
+            </p>
+          </div>
+          <button
+            class="bg-orange text-primary py-[10px] px-4 rounded-l-full rounded-r-full hover:brightness-125 transition-all duration-300"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div
+          class="flex flex-col items-center border border-primary py-8 px-[9px] gap-10"
+        >
+          <div class="flex flex-col items-center">
+            <h3
+              class="text-primary font-manrope font-bold text-lg tracking-wider"
+            >
+              Alpha Pack
+            </h3>
+            <img src="/assets/icons/PriceIcon2.svg" class="w-auto h-auto" />
+            <h2
+              class="font-manrope font-normal text-[22px] text-primary tracking-wider"
+            >
+              $75
+            </h2>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <p
+              class="font-manrope font-normal text-primary tracking-wider text-base text-center"
+            >
+              Working materials in PSD
+            </p>
+            <hr class="w-full border-t-[0.5] border-primary" />
+            <p
+              class="font-manrope font-normal text-primary tracking-wider text-base text-center"
+            >
+              1 year access to the library
+            </p>
+          </div>
+          <button
+            class="bg-primary text-green py-[10px] px-4 rounded-l-full rounded-r-full hover:bg-light_green transition-all duration-300"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <div
+          class="flex flex-col items-center border border-primary py-8 px-[9px] gap-10"
+        >
+          <div class="flex flex-col items-center">
+            <h3
+              class="text-primary font-manrope font-bold text-lg tracking-wider"
+            >
+              Extra Pack
+            </h3>
+            <img src="/assets/icons/PriceIcon3.svg" class="w-auto h-auto" />
+            <h2
+              class="font-manrope font-normal text-[22px] text-primary tracking-wider"
+            >
+              $80
+            </h2>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <p
+              class="font-manrope font-normal text-primary tracking-wider text-base text-center"
+            >
+              Complete documentation
+            </p>
+            <hr class="w-full border-t-[0.5] border-primary" />
+            <p
+              class="font-manrope font-normal text-primary tracking-wider text-base text-center"
+            >
+              2GB cloud storage
+            </p>
+          </div>
+          <button
+            class="bg-primary text-red py-[10px] px-4 rounded-l-full rounded-r-full hover:bg-light_red transition-all duration-300"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
