@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         manrope: ["Manrope", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       fontSize: {
         xl: "22px",
@@ -22,8 +23,11 @@ module.exports = {
         red: "#DC2626",
         light_red: "#FDE8E8",
         orange: "#EA580C",
+        light_orange: "#ff9539",
         dark_grey: "#1C202E",
         light_grey: "#90949F",
+        modal_dark_grey: "#1F2937",
+        modal_light_grey: "#6B7280",
         dark: "#00000066",
       },
     },
