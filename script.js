@@ -37,7 +37,10 @@ confirmationButton.addEventListener("click", () => {
   cartItemsNumber.textContent = cartItems;
 
   confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
+  confirmationModalOverlay.classList.remove("opacity-100");
+
   darkOverlay.classList.add("opacity-0");
+  darkOverlay.classList.remove("opacity-60");
 
   cartButton.classList.add("scale-125");
 
@@ -50,10 +53,19 @@ confirmationButton.addEventListener("click", () => {
 
 cancelConfirmationButton.addEventListener("click", () => {
   confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
+  confirmationModalOverlay.classList.remove("opacity-100");
+
   darkOverlay.classList.add("opacity-0");
+  darkOverlay.classList.remove("opacity-60");
 });
 
-closeModalButton.addEventListener("click", () => {
+const closeModal = () => {
   confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
+  confirmationModalOverlay.classList.remove("opacity-100");
+
   darkOverlay.classList.add("opacity-0");
-});
+  darkOverlay.classList.remove("opacity-60");
+};
+
+closeModalButton.addEventListener("click", closeModal);
+cancelConfirmationButton.addEventListener("click", closeModal);
