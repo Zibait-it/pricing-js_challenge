@@ -720,6 +720,10 @@ video {
   z-index: 50;
 }
 
+.order-last {
+  order: 9999;
+}
+
 .block {
   display: block;
 }
@@ -1453,10 +1457,6 @@ video {
   line-height: 1;
 }
 
-.text-\[10px\] {
-  font-size: 10px;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1768,14 +1768,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:right-10 {
-    right: 2.5rem;
-  }
-
-  .lg\:top-14 {
-    top: 3.5rem;
-  }
-
   .lg\:w-auto {
     width: auto;
   }
