@@ -14,19 +14,51 @@ const cartItemsNumber = document.getElementById("cart-items-number");
 const cartButton = document.getElementById("cart-button");
 const emptyCartModal = document.getElementById("empty-cart-modal");
 const cartModal = document.getElementById("cart-modal");
+const cartSummary = document.getElementById("cart-summary");
 
 let cartItems = [];
 let selectedPack = {
   name: "",
   price: 0,
   quantity: 0,
+  icon: "",
 };
 let cartClicked = false;
+
+const closeModal = () => {
+  confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
+  confirmationModalOverlay.classList.remove("opacity-100");
+
+  darkOverlay.classList.add("opacity-0");
+  darkOverlay.classList.remove("opacity-60");
+};
+const toggleModalVisibility = (modal, isOpen) => {
+  if (isOpen) {
+    modal.classList.remove("scale-0", "opacity-0", "pointer-events-none");
+    modal.classList.add("scale-100", "opacity-100");
+  } else {
+    modal.classList.add("scale-0", "opacity-0", "pointer-events-none");
+    modal.classList.remove("scale-100", "opacity-100");
+  }
+};
+
+const calculateTotal = () => {
+  let total = 0;
+  cartItems.forEach((item) => {
+    total += item.price * item.quantity;
+  });
+  return total;
+};
+const updateTotalDisplay = () => {
+  const total = calculateTotal();
+  document.getElementById("total-cart-display").textContent = `$${total}`;
+};
 
 addToCartButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     selectedPack.name = event.target.dataset.pack;
-    selectedPack.price = event.target.dataset.price;
+    selectedPack.price = parseFloat(event.target.dataset.price);
+    selectedPack.icon = event.target.dataset.icon;
 
     darkOverlay.classList.remove("opacity-0");
     darkOverlay.classList.add("opacity-60");
@@ -64,6 +96,14 @@ confirmationButton.addEventListener("click", () => {
     );
     const itemQuantity = itemElement.querySelector(".quantity-display");
     itemQuantity.textContent = existingItem.quantity;
+
+    const summaryElement = document.getElementById(
+      `summary-item-${selectedPack.name.replace(/\s+/g, "-").toLowerCase()}-${
+        selectedPack.price
+      }`
+    );
+    const itemSubtotal = summaryElement.querySelector(".subtotal-display");
+    itemSubtotal.textContent = `$${existingItem.price * existingItem.quantity}`;
   } else {
     selectedPack.quantity = 1;
     cartItems.push({ ...selectedPack });
@@ -76,7 +116,7 @@ confirmationButton.addEventListener("click", () => {
     itemElement.className =
       "bg-primary w-full rounded-xl flex justify-start items-center p-4 gap-4";
     itemElement.innerHTML = ` <div>
-          <img src="/assets/icons/PriceIcon2.svg" class="size-20" />
+          <img src="/assets/icons/${selectedPack.icon}" class="size-20" />
         </div>
         <div class="flex flex-col items-center gap-2">
           <h3 class="text-black font-bold">${selectedPack.name}</h3>
@@ -103,8 +143,26 @@ confirmationButton.addEventListener("click", () => {
         </div>
     `;
     cartModal.appendChild(itemElement);
+
+    const summaryElement = document.createElement("div");
+    summaryElement.id = `summary-item-${selectedPack.name
+      .replace(/\s+/g, "-")
+      .toLowerCase()}-${selectedPack.price}`;
+
+    summaryElement.className = "flex justify-between text-sm font-semibold";
+    summaryElement.innerHTML = `<p class="text-light-grey">${
+      selectedPack.name
+    }</p><p class="subtotal-display">$${
+      selectedPack.price * selectedPack.quantity
+    }</p>`;
+
+    cartSummary.appendChild(summaryElement);
   }
+
   cartItemsNumber.textContent = cartItems.length;
+
+  updateTotalDisplay();
+
   setTimeout(() => {
     cartButton.classList.remove("scale-125");
     cartItemsContainer.classList.remove("hidden");
@@ -112,53 +170,15 @@ confirmationButton.addEventListener("click", () => {
   }, 500);
 });
 
-cancelConfirmationButton.addEventListener("click", () => {
-  confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
-  confirmationModalOverlay.classList.remove("opacity-100");
-
-  darkOverlay.classList.add("opacity-0");
-  darkOverlay.classList.remove("opacity-60");
-});
-
-const closeModal = () => {
-  confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
-  confirmationModalOverlay.classList.remove("opacity-100");
-
-  darkOverlay.classList.add("opacity-0");
-  darkOverlay.classList.remove("opacity-60");
-};
-
 closeModalButton.addEventListener("click", closeModal);
 cancelConfirmationButton.addEventListener("click", closeModal);
 
 cartButton.addEventListener("click", () => {
-  if (cartItems.length === 0) {
-    cartClicked = !cartClicked;
+  cartClicked = !cartClicked;
 
-    if (cartClicked) {
-      emptyCartModal.classList.remove(
-        "scale-0",
-        "opacity-0",
-        "pointer-events-none"
-      );
-      emptyCartModal.classList.add("scale-100", "opacity-100");
-    } else {
-      emptyCartModal.classList.add(
-        "scale-0",
-        "opacity-0",
-        "pointer-events-none"
-      );
-      emptyCartModal.classList.remove("scale-100", "opacity-100");
-    }
-  }
-  if (cartItems.length > 0) {
-    cartClicked = !cartClicked;
-    if (cartClicked) {
-      cartModal.classList.remove("scale-0", "opacity-0", "pointer-events-none");
-      cartModal.classList.add("scale-100", "opacity-100");
-    } else {
-      cartModal.classList.add("scale-0", "opacity-0", "pointer-events-none");
-      cartModal.classList.remove("scale-100", "opacity-100");
-    }
+  if (cartItems.length === 0) {
+    toggleModalVisibility(emptyCartModal, cartClicked);
+  } else {
+    toggleModalVisibility(cartModal, cartClicked);
   }
 });

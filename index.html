@@ -20,7 +20,7 @@
   </head>
   <body
     id="bdy"
-    class="flex flex-col lg:items-center min-h-screen w-screen bg-[url('/assets/images/Image.jpg')] bg-cover bg-top backdrop-brightness-[0.35]"
+    class="flex flex-col lg:items-center min-h-screen bg-[url('/assets/images/Image.jpg')] bg-cover bg-top backdrop-brightness-[0.35]"
   >
     <div
       class="flex justify-center lg:justify-end items-center w-full py-2.5 2xl:py-8 px-10"
@@ -47,82 +47,15 @@
       id="cart-modal"
       class="bg-primary-transparent flex flex-col gap-3.5 absolute rounded-xl font-manrope p-6 z-80 top-14 right-10 pointer-events-none opacity-0 scale-0 transition-all duration-300"
     >
-      <!--       <div
-        class="bg-primary w-full rounded-xl flex justify-start items-center p-4 gap-4"
-      >
-        <div>
-          <img src="/assets/icons/PriceIcon2.svg" class="size-20" />
-        </div>
-        <div class="flex flex-col items-center gap-2">
-          <h3 class="text-black font-bold">Alpha Pack</h3>
-          <div class="flex flex-row items-center gap-2">
-            <img
-              src="/assets/icons/SubstractIcon.svg"
-              class="size-8 hover:scale-105 transition-all duration-300"
-            />
-            <p>2</p>
-            <img
-              src="/assets/icons/AddIcon.svg"
-              class="size-8 hover:scale-105 transition-all duration-300"
-            />
-          </div>
-        </div>
-        <div
-          class="flex flex-col items-center text-base font-medium text-light-grey gap-2"
-        >
-          <p>$75 each</p>
-          <img
-            src="/assets/icons/BinIcon.svg"
-            class="size-8 hover:bg-light-orange rounded-full p-2"
-          />
-        </div>
-      </div>
       <div
-        class="bg-primary w-full rounded-xl flex justify-start items-center p-4 gap-4"
+        id="cart-summary"
+        class="bg-primary rounded-xl w-full flex flex-col gap-4 pl-4 py-4 pr-10 order-12"
       >
-        <div>
-          <img src="/assets/icons/PriceIcon1.svg" class="size-20" />
-        </div>
-        <div class="flex flex-col items-center gap-2">
-          <h3 class="text-black font-bold">Alpha Pack</h3>
-          <div class="flex flex-row items-center gap-2">
-            <img
-              src="/assets/icons/SubstractIcon.svg"
-              class="size-8 hover:scale-105 transition-all duration-300"
-            />
-            <p>1</p>
-            <img
-              src="/assets/icons/AddIcon.svg"
-              class="size-8 hover:scale-105 transition-all duration-300"
-            />
-          </div>
-        </div>
-        <div
-          class="flex flex-col items-center text-base font-medium gap-2 text-light-grey"
-        >
-          <p>$80</p>
-          <img
-            src="/assets/icons/BinIcon.svg"
-            class="size-8 hover:bg-light-orange rounded-full p-2"
-          />
-        </div>
-      </div>
-      <div
-        class="bg-primary rounded-xl w-full flex flex-col gap-4 pl-4 py-4 pr-10"
-      >
-        <div class="flex justify-between text-sm font-semibold">
-          <p class="text-light-grey">Alpha Pack x2</p>
-          <p>$150</p>
-        </div>
-        <div class="flex justify-between text-sm font-semibold">
-          <p class="text-light-grey">Alpha Pack</p>
-          <p>$80</p>
-        </div>
-        <div class="flex justify-between font-semibold">
+        <div class="flex justify-between font-semibold order-last">
           <p class="text-black text-sm">Total</p>
-          <p class="text-black text-base">$230</p>
+          <p id="total-cart-display" class="text-black text-base"></p>
         </div>
-      </div> -->
+      </div>
       <button
         class="bg-orange text-primary w-full rounded-full text-base font-normal py-3 hover:brightness-125 transition-all duration-300 order-last"
       >
@@ -193,6 +126,7 @@
           <button
             data-pack="Bravo Pack"
             data-price="10"
+            data-icon="PriceIcon.svg"
             class="add-to-cart bg-primary text-yellow py-2.5 px-4 rounded-full hover:bg-light-yellow transition-all duration-300"
           >
             Add to Cart
@@ -227,6 +161,7 @@
           <button
             data-pack="Alpha Pack"
             data-price="67"
+            data-icon="PriceIcon1.svg"
             class="add-to-cart bg-orange text-primary py-2.5 px-4 rounded-full hover:brightness-125 transition-all duration-300"
           >
             Add to Cart
@@ -258,6 +193,7 @@
           <button
             data-pack="Alpha Pack"
             data-price="75"
+            data-icon="PriceIcon2.svg"
             class="add-to-cart bg-primary text-green py-2.5 px-4 rounded-full hover:bg-light-green transition-all duration-300"
           >
             Add to Cart
@@ -289,6 +225,7 @@
           <button
             data-pack="Extra Pack"
             data-price="80"
+            data-icon="PriceIcon3.svg"
             class="add-to-cart bg-primary text-red py-2.5 px-4 rounded-full hover:bg-light-red transition-all duration-300"
           >
             Add to Cart
