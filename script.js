@@ -29,8 +29,7 @@ const closeModal = () => {
   confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
   confirmationModalOverlay.classList.remove("opacity-100");
 
-  darkOverlay.classList.add("opacity-0");
-  darkOverlay.classList.remove("opacity-60");
+  darkOverlay.classList.replace("opacity-60", "opacity-0");
 };
 const toggleModalVisibility = (modal, isOpen) => {
   if (isOpen) {
@@ -60,8 +59,7 @@ addToCartButtons.forEach((button) => {
     selectedPack.price = parseFloat(event.target.dataset.price);
     selectedPack.icon = event.target.dataset.icon;
 
-    darkOverlay.classList.remove("opacity-0");
-    darkOverlay.classList.add("opacity-60");
+    darkOverlay.classList.replace("opacity-0", "opacity-60");
 
     confirmationModalOverlay.classList.remove(
       "opacity-0",
@@ -77,8 +75,7 @@ confirmationButton.addEventListener("click", () => {
   confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
   confirmationModalOverlay.classList.remove("opacity-100");
 
-  darkOverlay.classList.add("opacity-0");
-  darkOverlay.classList.remove("opacity-60");
+  darkOverlay.classList.replace("opacity-60", "opacity-0");
 
   cartButton.classList.add("scale-125");
 
@@ -165,8 +162,7 @@ confirmationButton.addEventListener("click", () => {
 
   setTimeout(() => {
     cartButton.classList.remove("scale-125");
-    cartItemsContainer.classList.remove("hidden");
-    cartItemsContainer.classList.add("flex");
+    cartItemsContainer.classList.replace("hidden", "flex");
   }, 500);
 });
 
