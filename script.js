@@ -26,18 +26,20 @@ let selectedPack = {
 let cartClicked = false;
 
 const closeModal = () => {
-  confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
-  confirmationModalOverlay.classList.remove("opacity-100");
+  confirmationModalOverlay.classList.replace("opacity-100", "opacity-0");
+  confirmationModalOverlay.classList.add("pointer-events-none");
 
   darkOverlay.classList.replace("opacity-60", "opacity-0");
 };
 const toggleModalVisibility = (modal, isOpen) => {
   if (isOpen) {
-    modal.classList.remove("scale-0", "opacity-0", "pointer-events-none");
-    modal.classList.add("scale-100", "opacity-100");
+    modal.classList.replace("opacity-0", "opacity-100");
+    modal.classList.replace("scale-0", "scale-100");
+    modal.classList.remove("pointer-events-none");
   } else {
-    modal.classList.add("scale-0", "opacity-0", "pointer-events-none");
-    modal.classList.remove("scale-100", "opacity-100");
+    modal.classList.replace("opacity-100", "opacity-0");
+    modal.classList.replace("scale-100", "scale-0");
+    modal.classList.add("pointer-events-none");
   }
 };
 
@@ -55,33 +57,30 @@ const updateTotalDisplay = () => {
 
 addToCartButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
-    selectedPack.name = event.target.dataset.pack;
-    selectedPack.price = parseFloat(event.target.dataset.price);
-    selectedPack.icon = event.target.dataset.icon;
+    const { pack: name, price, icon } = event.target.dataset;
+    Object.assign(selectedPack, { name, price: parseFloat(price), icon });
 
     darkOverlay.classList.replace("opacity-0", "opacity-60");
 
-    confirmationModalOverlay.classList.remove(
-      "opacity-0",
-      "pointer-events-none"
-    );
-    confirmationModalOverlay.classList.add("flex", "opacity-100");
+    confirmationModalOverlay.classList.replace("opacity-0", "opacity-100");
+    confirmationModalOverlay.classList.remove("pointer-events-none");
+    confirmationModalOverlay.classList.add("flex");
 
-    confirmationText.textContent = `Are you sure you want to add ${selectedPack.name} to your cart?`;
+    confirmationText.textContent = `Are you sure you want to add ${name} to your cart?`;
   });
 });
 
 confirmationButton.addEventListener("click", () => {
-  confirmationModalOverlay.classList.add("opacity-0", "pointer-events-none");
-  confirmationModalOverlay.classList.remove("opacity-100");
+  confirmationModalOverlay.classList.replace("opacity-100", "opacity-0");
+  confirmationModalOverlay.classList.add("pointer-events-none");
 
   darkOverlay.classList.replace("opacity-60", "opacity-0");
 
   cartButton.classList.add("scale-125");
 
   const existingItem = cartItems.find(
-    (item) =>
-      item.name === selectedPack.name && item.price === selectedPack.price
+    ({ name, price }) =>
+      name === selectedPack.name && price === selectedPack.price
   );
 
   if (existingItem) {
@@ -172,9 +171,6 @@ cancelConfirmationButton.addEventListener("click", closeModal);
 cartButton.addEventListener("click", () => {
   cartClicked = !cartClicked;
 
-  if (cartItems.length === 0) {
-    toggleModalVisibility(emptyCartModal, cartClicked);
-  } else {
-    toggleModalVisibility(cartModal, cartClicked);
-  }
+  const modalToToggle = cartItems.length === 0 ? emptyCartModal : cartModal;
+  toggleModalVisibility(modalToToggle, cartClicked);
 });
