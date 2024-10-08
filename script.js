@@ -18,6 +18,7 @@ const cartSummary = document.getElementById("cart-summary");
 
 let cartItems = [];
 let selectedPack = {
+  id: "",
   name: "",
   price: 0,
   quantity: 0,
@@ -57,8 +58,8 @@ const updateTotalDisplay = () => {
 
 addToCartButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
-    const { pack: name, price, icon } = event.target.dataset;
-    Object.assign(selectedPack, { name, price: parseFloat(price), icon });
+    const { name, price, icon, id } = event.target.dataset;
+    Object.assign(selectedPack, { name, price: parseFloat(price), icon, id });
 
     darkOverlay.classList.replace("opacity-0", "opacity-60");
 
@@ -85,18 +86,12 @@ confirmationButton.addEventListener("click", () => {
 
   if (existingItem) {
     existingItem.quantity += 1;
-    const itemElement = document.getElementById(
-      `cart-item-${selectedPack.name.replace(/\s+/g, "-").toLowerCase()}-${
-        selectedPack.price
-      }`
-    );
+    const itemElement = document.getElementById(`cart-item-${selectedPack.id}`);
     const itemQuantity = itemElement.querySelector(".quantity-display");
     itemQuantity.textContent = existingItem.quantity;
 
     const summaryElement = document.getElementById(
-      `summary-item-${selectedPack.name.replace(/\s+/g, "-").toLowerCase()}-${
-        selectedPack.price
-      }`
+      `summary-item-${selectedPack.id}`
     );
     const itemSubtotal = summaryElement.querySelector(".subtotal-display");
     itemSubtotal.textContent = `$${existingItem.price * existingItem.quantity}`;
@@ -105,9 +100,7 @@ confirmationButton.addEventListener("click", () => {
     cartItems.push({ ...selectedPack });
 
     const itemElement = document.createElement("div");
-    itemElement.id = `cart-item-${selectedPack.name
-      .replace(/\s+/g, "-")
-      .toLowerCase()}-${selectedPack.price}`;
+    itemElement.id = `cart-item-${selectedPack.id}`;
 
     itemElement.className =
       "bg-primary w-full rounded-xl flex justify-start items-center p-4 gap-4";
@@ -141,9 +134,7 @@ confirmationButton.addEventListener("click", () => {
     cartModal.appendChild(itemElement);
 
     const summaryElement = document.createElement("div");
-    summaryElement.id = `summary-item-${selectedPack.name
-      .replace(/\s+/g, "-")
-      .toLowerCase()}-${selectedPack.price}`;
+    summaryElement.id = `summary-item-${selectedPack.id}`;
 
     summaryElement.className = "flex justify-between text-sm font-semibold";
     summaryElement.innerHTML = `<p class="text-light-grey">${
