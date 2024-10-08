@@ -20,7 +20,7 @@
   </head>
   <body
     id="bdy"
-    class="flex flex-col lg:items-center min-h-screen w-screen bg-[url('/assets/images/Image.jpg')] bg-cover bg-top backdrop-brightness-[0.35]"
+    class="flex flex-col lg:items-center min-h-screen bg-[url('/assets/images/Image.jpg')] bg-cover bg-top backdrop-brightness-[0.35]"
   >
     <div
       class="flex justify-center lg:justify-end items-center w-full py-2.5 2xl:py-8 px-10"
@@ -36,12 +36,40 @@
         >
           <p
             id="cart-items-number"
-            class="text-orange text-[10px] font-manrope font-bold"
+            class="text-orange text-xs font-manrope font-bold"
           >
             3
           </p>
         </div>
       </button>
+    </div>
+    <div
+      id="cart-modal"
+      class="bg-primary-transparent flex flex-col gap-3.5 absolute rounded-xl font-manrope p-6 top-14 right-10 pointer-events-none opacity-0 scale-0 transition-all duration-300"
+    >
+      <div
+        id="cart-summary"
+        class="bg-primary rounded-xl w-full flex flex-col gap-4 pl-4 py-4 pr-10 order-12"
+      >
+        <div class="flex justify-between font-semibold order-last">
+          <p class="text-black text-sm">Total</p>
+          <p id="total-cart-display" class="text-black text-base"></p>
+        </div>
+      </div>
+      <button
+        class="bg-orange text-primary w-full rounded-full text-base font-normal py-3 hover:brightness-125 transition-all duration-300 order-last"
+      >
+        Buy
+      </button>
+    </div>
+    <div
+      id="empty-cart-modal"
+      class="flex bg-primary flex-col items-center gap-1 text-center absolute rounded-xl w-64 font-manrope p-4 top-14 right-10 text-modal-dark-grey scale-0 opacity-0 pointer-events-none transition-all duration-300"
+    >
+      <h3 class="font-bold">Empty cart</h3>
+      <p class="font-medium leading-tight">
+        You have not added any items to your cart yet.
+      </p>
     </div>
     <section class="flex flex-col items-center gap-20 w-full">
       <div class="flex flex-col items-center gap-6">
@@ -96,7 +124,10 @@
             </p>
           </div>
           <button
-            data-pack="Bravo Pack"
+            data-id="bravo-pack-10"
+            data-name="Bravo Pack"
+            data-price="10"
+            data-icon="PriceIcon.svg"
             class="add-to-cart bg-primary text-yellow py-2.5 px-4 rounded-full hover:bg-light-yellow transition-all duration-300"
           >
             Add to Cart
@@ -129,7 +160,10 @@
             </p>
           </div>
           <button
-            data-pack="Alpha Pack"
+            data-id="alpha-pack-67"
+            data-name="Alpha Pack"
+            data-price="67"
+            data-icon="PriceIcon1.svg"
             class="add-to-cart bg-orange text-primary py-2.5 px-4 rounded-full hover:brightness-125 transition-all duration-300"
           >
             Add to Cart
@@ -159,7 +193,10 @@
             </p>
           </div>
           <button
-            data-pack="Alpha Pack"
+            data-id="alpha-pack-75"
+            data-name="Alpha Pack"
+            data-price="75"
+            data-icon="PriceIcon2.svg"
             class="add-to-cart bg-primary text-green py-2.5 px-4 rounded-full hover:bg-light-green transition-all duration-300"
           >
             Add to Cart
@@ -189,7 +226,10 @@
             </p>
           </div>
           <button
-            data-pack="Extra Pack"
+            data-id="extra-pack-80"
+            data-name="Extra Pack"
+            data-price="80"
+            data-icon="PriceIcon3.svg"
             class="add-to-cart bg-primary text-red py-2.5 px-4 rounded-full hover:bg-light-red transition-all duration-300"
           >
             Add to Cart
